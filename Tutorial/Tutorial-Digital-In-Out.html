@@ -1,0 +1,292 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <title>
+	Tutorial-Digital-In-Out
+  </title>
+  <link href="http://staging.cybermakerspace.com/css/style.css" rel="stylesheet"/>
+  <style type="text/css">
+   ::selection,a::selection{background:rgba(255,255,0,.3)}a,a::selection{color:#0645ad}hr,img{border:0}a,ins{text-decoration:none}::selection,ins,mark{color:#000}dfn,mark{font-style:italic}hr,ol,p,ul{margin:1em 0}table tr td,table tr th{border:1px solid #ccc;text-align:left;padding:6px 13px;margin:0}hr,pre code,table,table tr{padding:0}pre,pre code{white-space:pre}html{font-size:100%;overflow-y:scroll;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}body{color:#444;font-family:Georgia,Palatino,"Palatino Linotype",Times,"Times New Roman",serif;font-size:12px;line-height:1.5em;padding:1em;margin:auto;max-width:42em;background:#fefefe}a:visited{color:#0b0080}a:hover{color:#06e}a:active{color:#faa700}a:focus{outline:dotted thin}a:active,a:hover{outline:0}::-moz-selection{background:rgba(255,255,0,.3);color:#000}a::-moz-selection{background:rgba(255,255,0,.3);color:#0645ad}img{max-width:100%;-ms-interpolation-mode:bicubic;vertical-align:middle}h1,h2,h3,h4,h5,h6{font-weight:400;color:#111;line-height:1em}b,h4,h5,h6,mark,strong,table tr th{font-weight:700}h1{font-size:2.5em}h2{font-size:2em}h3{font-size:1.5em}h4{font-size:1.2em}h5{font-size:1em}h6{font-size:.9em}blockquote{color:#666;margin:0;padding-left:3em;border-left:.5em #EEE solid}hr{display:block;height:2px;border-top:1px solid #aaa;border-bottom:1px solid #eee}code,kbd,pre,samp{color:#000;font-family:monospace,monospace;font-size:.98em}pre{white-space:pre-wrap;word-wrap:break-word}ins{background:#ff9}mark{background:#ff0}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}ol,ul{padding:0 0 0 2em}li p:last-child{margin:0}dd{margin:0 0 0 2em}table{border-collapse:collapse;border-spacing:0}td{vertical-align:top}@media only screen and (min-width:480px){body{font-size:14px}}@media only screen and (min-width:768px){body{font-size:16px}}@media print{blockquote,img,pre,tr{page-break-inside:avoid}*{background:0 0!important;color:#000!important;filter:none!important;-ms-filter:none!important}body{font-size:12pt;max-width:100%}a,a:visited{text-decoration:underline}hr{height:1px;border:0;border-bottom:1px solid #000}a[href]:after{content:" (" attr(href) ")"}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}blockquote,pre{border:1px solid #999;padding-right:1em}img{max-width:100%!important}@page :left{margin:15mm 20mm 15mm 10mm}@page :right{margin:15mm 10mm 15mm 20mm}h2,h3,p{orphans:3;widows:3}h2,h3{page-break-after:avoid}}table tr{border-top:1px solid #ccc;background-color:#fff;margin:0}table tr:nth-child(2n){background-color:#aaa}table tr td :first-child,table tr th :first-child{margin-top:0}table tr td:last-child,table tr th :last-child{margin-bottom:0}code,tt{margin:0 2px;padding:0 5px;white-space:nowrap;border:1px solid #eaeaea;background-color:#f8f8f8;border-radius:3px}pre code{margin:0;border:none;background:0 0}.highlight pre,pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}
+  </style>
+ </head>
+ <body>
+  <h1 id="digital-inout">
+   Digital In/Out
+  </h1>
+  <h3 id="digital-in">
+   Digital In
+  </h3>
+  <p>
+   This
+   <code>
+    Digital In Example
+   </code>
+   program is for read Digital Input Pin value. User will control Ditigal Input Pin value with Swtich. And LED turns on or off, depending on the Digital input value.
+   <br/>
+   <br/>
+  </p>
+  <h4 id="importing-digital-in">
+   Importing Digital In
+  </h4>
+  <p>
+   This is the
+   <code>
+    Digial In Example
+   </code>
+   program. Click the
+   <code>
+    Import into Compiler
+   </code>
+   button
+  </p>
+  <p>
+  </p>
+  <center>
+   <br/>
+   <a href="https://developer.mbed.org/compiler/#import:/teams/IOP/code/DigitalIn_HelloWorld_WIZwiki-W7500/">
+    <img alt="import" src="./images/Tutorial/Common_image/import_button.png"/>
+   </a>
+   <br/>
+  </center>
+  <br/>
+  <br/>
+  Let’s open the
+  <code>
+   main.cpp
+  </code>
+  file in Program Workspace. This program reads Digital Input Value from
+  <code>
+   D10
+  </code>
+  pin and controls
+  <code>
+   LED1
+  </code>
+  .
+  <pre><code class="cpp">  #include "mbed.h"
+
+  DigitalOut myled_R(LED1); //Declare the variable for digital io LED1.
+  DigitalIn mysw(D10);      //Declare D10 pin as Digital Input Pin
+
+  int main() {
+
+    int sw_val;
+
+    while(1){ //Execute forever.
+
+      sw_val = mysw.read();    //Read Digital input pin
+
+      printf("Digital Input value is %d \n\r", sw_val); //Debug Digital value
+
+      if(sw_val == 1) //Check the value
+      {     
+        myled_R = 0;  //Making digital io LED1 to 0
+      }
+      else
+      {
+        myled_R = 1;  //Making digital io LED1 to 1
+      }
+
+      wait(0.2);
+    }
+  }
+</code></pre>
+  <p>
+  </p>
+  <center>
+   <br/>
+   <img alt="Digital_In" src="./images/Tutorial/Tutorial_Digital_In_Out/Tutorial_Digital_In_2.png"/>
+   <br/>
+  </center>
+  <br/>
+  <br/>
+  <h4 id="hardware-wiring">
+   Hardware Wiring
+  </h4>
+  <h5 id="component">
+   Component
+  </h5>
+  <ul>
+   <li>
+    WIZwiki-W7500
+   </li>
+   <li>
+    Breadboard
+   </li>
+   <li>
+    Jump cables
+   </li>
+   <li>
+    Push Button
+   </li>
+  </ul>
+  <p>
+  </p>
+  <center>
+   <br/>
+   <img alt="Digital_In" src="./images/Tutorial/Tutorial_Digital_In_Out/Tutorial_Digital_In_4.png"/>
+   <br/>
+  </center>
+  <br/>
+  <br/>
+  <h4 id="result">
+   Result
+  </h4>
+  <blockquote>
+   <p>
+    Check the results. During pressing the button, RED LED turns on.
+   </p>
+  </blockquote>
+  <p>
+  </p>
+  <center>
+   <br/>
+   <img alt="Digital_In" src="./images/Tutorial/Tutorial_Digital_In_Out/Digital_In_result_1.gif"/>
+   <br/>
+  </center>
+  <blockquote>
+   <p>
+    User is able to check the Digital value with Serial Terminal as well.
+   </p>
+  </blockquote>
+  <p>
+  </p>
+  <center>
+   <br/>
+   <img alt="Digital_In" src="./images/Tutorial/Tutorial_Digital_In_Out/Digital_In_result_2.png"/>
+   <br/>
+  </center>
+  <br/>
+  <br/>
+  <h3 id="digital-out">
+   Digital Out
+  </h3>
+  <blockquote>
+   <p>
+    This
+    <code>
+     Digital Out Example
+    </code>
+    program is for control Digital Output Pin value. User is able to control
+    <code>
+     LED1
+    </code>
+    ,
+    <code>
+     LED2
+    </code>
+    ,
+    <code>
+     LED3
+    </code>
+    with Ditigal Output Pin value.
+    <br/>
+    <br/>
+   </p>
+  </blockquote>
+  <h4 id="importing-digital-out">
+   Importing Digital Out
+  </h4>
+  <p>
+   This is the
+   <code>
+    Digial Out Example
+   </code>
+   program. Click the
+   <code>
+    Import into Compiler
+   </code>
+   button
+  </p>
+  <p>
+  </p>
+  <center>
+   <br/>
+   <a href="https://developer.mbed.org/compiler/#import:/teams/IOP/code/DigitalOut_HelloWorld_WIZwiki-W7500/">
+    <img alt="import" src="./images/Tutorial/Common_image/import_button.png"/>
+   </a>
+   <br/>
+  </center>
+  <p>
+   Let’s open the main.cpp file in Program Workspace. This program declares
+   <code>
+    LED1
+   </code>
+   ,
+   <code>
+    LED2
+   </code>
+   ,
+   <code>
+    LED3
+   </code>
+   as Digital Output and controls
+   <code>
+    Digital Output Value
+   </code>
+   .
+  </p>
+  <pre><code class="cpp">#include "mbed.h"
+
+DigitalOut myled_R(LED1); //Declare the variable for digital io LED1.
+DigitalOut myled_G(LED2); //Declare the variable for digital io LED2.
+DigitalOut myled_B(LED3); //Declare the variable for digital io LED3.
+
+int main()
+{    
+    while(1) {  //Execute forever.
+        myled_R = 0;  //Making digital io LED1 to 0
+        myled_G = 0;  //Making digital io LED1 to 0
+        myled_B = 0;  //Making digital io LED1 to 0
+        wait(0.5);  //Delay 0.5sec
+        myled_R = 1;  //Making digital io LED1 to 1
+        myled_G = 1;  //Making digital io LED1 to 1
+        myled_B = 1;  //Making digital io LED1 to 1
+        wait(0.5);  //Delay 0.5sec
+    }
+}
+</code></pre>
+  <p>
+  </p>
+  <center>
+   <br/>
+   <img alt="Digital_Out" src="./images/Tutorial/Tutorial_Digital_In_Out/Tutorial_Digital_Out_2.png"/>
+   <br/>
+  </center>
+  <p>
+   <br/>
+  </p>
+  <h4 id="result_1">
+   Result
+  </h4>
+  <blockquote>
+   <p>
+    Check the result. Every 0.5sec, onboard LEDs blink like below capture.
+   </p>
+  </blockquote>
+  <p>
+  </p>
+  <center>
+   <br/>
+   <img alt="Digital_Out" src="./images/Tutorial/Tutorial_Digital_In_Out/Digital_Out_result.gif"/>
+   <br/>
+  </center>
+  <h3 id="go-to-tutorial-5-uart">
+   ▶ Go to
+   <a href="Tutorial-UART.html">
+    Tutorial 5. UART
+   </a>
+  </h3>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js">
+  </script>
+  <script>
+   hljs.initHighlightingOnLoad();
+  </script>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+  </script>
+  <script type="text/javascript">
+   MathJax.Hub.Config({"showProcessingMessages" : false,"messageStyle" : "none","tex2jax": { inlineMath: [ [ "$", "$" ] ] }});
+  </script>
+ </body>
+</html>

@@ -1,0 +1,294 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <title>
+	Tutorial-UART
+  </title>
+  <link href="http://staging.cybermakerspace.com/css/style.css" rel="stylesheet"/>
+  <style type="text/css">
+   ::selection,a::selection{background:rgba(255,255,0,.3)}a,a::selection{color:#0645ad}hr,img{border:0}a,ins{text-decoration:none}::selection,ins,mark{color:#000}dfn,mark{font-style:italic}hr,ol,p,ul{margin:1em 0}table tr td,table tr th{border:1px solid #ccc;text-align:left;padding:6px 13px;margin:0}hr,pre code,table,table tr{padding:0}pre,pre code{white-space:pre}html{font-size:100%;overflow-y:scroll;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}body{color:#444;font-family:Georgia,Palatino,"Palatino Linotype",Times,"Times New Roman",serif;font-size:12px;line-height:1.5em;padding:1em;margin:auto;max-width:42em;background:#fefefe}a:visited{color:#0b0080}a:hover{color:#06e}a:active{color:#faa700}a:focus{outline:dotted thin}a:active,a:hover{outline:0}::-moz-selection{background:rgba(255,255,0,.3);color:#000}a::-moz-selection{background:rgba(255,255,0,.3);color:#0645ad}img{max-width:100%;-ms-interpolation-mode:bicubic;vertical-align:middle}h1,h2,h3,h4,h5,h6{font-weight:400;color:#111;line-height:1em}b,h4,h5,h6,mark,strong,table tr th{font-weight:700}h1{font-size:2.5em}h2{font-size:2em}h3{font-size:1.5em}h4{font-size:1.2em}h5{font-size:1em}h6{font-size:.9em}blockquote{color:#666;margin:0;padding-left:3em;border-left:.5em #EEE solid}hr{display:block;height:2px;border-top:1px solid #aaa;border-bottom:1px solid #eee}code,kbd,pre,samp{color:#000;font-family:monospace,monospace;font-size:.98em}pre{white-space:pre-wrap;word-wrap:break-word}ins{background:#ff9}mark{background:#ff0}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}ol,ul{padding:0 0 0 2em}li p:last-child{margin:0}dd{margin:0 0 0 2em}table{border-collapse:collapse;border-spacing:0}td{vertical-align:top}@media only screen and (min-width:480px){body{font-size:14px}}@media only screen and (min-width:768px){body{font-size:16px}}@media print{blockquote,img,pre,tr{page-break-inside:avoid}*{background:0 0!important;color:#000!important;filter:none!important;-ms-filter:none!important}body{font-size:12pt;max-width:100%}a,a:visited{text-decoration:underline}hr{height:1px;border:0;border-bottom:1px solid #000}a[href]:after{content:" (" attr(href) ")"}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}blockquote,pre{border:1px solid #999;padding-right:1em}img{max-width:100%!important}@page :left{margin:15mm 20mm 15mm 10mm}@page :right{margin:15mm 10mm 15mm 20mm}h2,h3,p{orphans:3;widows:3}h2,h3{page-break-after:avoid}}table tr{border-top:1px solid #ccc;background-color:#fff;margin:0}table tr:nth-child(2n){background-color:#aaa}table tr td :first-child,table tr th :first-child{margin-top:0}table tr td:last-child,table tr th :last-child{margin-bottom:0}code,tt{margin:0 2px;padding:0 5px;white-space:nowrap;border:1px solid #eaeaea;background-color:#f8f8f8;border-radius:3px}pre code{margin:0;border:none;background:0 0}.highlight pre,pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}
+  </style>
+ </head>
+ <body>
+  <h1 id="uart">
+   UART
+  </h1>
+  <p>
+   This
+   <code>
+    UART example
+   </code>
+   is that
+   <code>
+    UART communication
+   </code>
+   between
+   <code>
+    PC
+   </code>
+   to
+   <code>
+    WIZwiki-W7500
+   </code>
+   . When user type
+   <code>
+    a character
+   </code>
+   on
+   <code>
+    Serial Terminal
+   </code>
+   , PC sends it to WIZwiki-W7500 via
+   <code>
+    USB cable
+   </code>
+   and WIZwiki-W7500 returns
+   <code>
+    the character + 1
+   </code>
+   . Then, it is monitered on Serial Terminal.
+  </p>
+  <h3 id="importing-uart-example">
+   Importing UART Example
+  </h3>
+  <p>
+   This is the
+   <code>
+    UART Example
+   </code>
+   program. Enter the
+   <code>
+    Import into Compiler
+   </code>
+   button.
+  </p>
+  <p>
+  </p>
+  <center>
+   <br/>
+   <a href="https://developer.mbed.org/compiler/#import:/teams/IOP/code/Uart_Printf_HelloWorld_WIZwiki-W7500/">
+    <img alt="import" src="./images/Tutorial/Common_image/import_button.png"/>
+   </a>
+   <br/>
+  </center>
+  <p>
+   The
+   <code>
+    Mbed library
+   </code>
+   supports the following class references for
+   <code>
+    UART
+   </code>
+   . For more information, see
+   <code>
+    the Link
+   </code>
+   below.
+  </p>
+  <h5 id="mbed-library-link">
+   <a href="https://developer.mbed.org/users/mbed_official/code/mbed/docs/tip/classmbed_1_1Serial.html">
+    Mbed library link
+   </a>
+  </h5>
+  <p>
+  </p>
+  <center>
+   <br/>
+   <img alt="UART" src="./images/Tutorial/Tutorial_UART/Tutorial_UART_0.png"/>
+   <br/>
+  </center>
+  <p>
+   Let’s open the
+   <code>
+    main.cpp
+   </code>
+   file in Program Workspace. This program used
+   <code>
+    Serial class
+   </code>
+   from
+   <code>
+    mbed library
+   </code>
+   for
+   <code>
+    UART
+   </code>
+   . This program using
+   <code>
+    UART1
+   </code>
+   on
+   <code>
+    WIZwiki-W7500
+   </code>
+   .
+   <code>
+    UART1 TXD
+   </code>
+   ,
+   <code>
+    UART1 RXD
+   </code>
+   pins are
+   <code>
+    PC_2
+   </code>
+   and
+   <code>
+    PC_3
+   </code>
+   .
+   <code>
+    Baudrate
+   </code>
+   is set
+   <code>
+    115200bps
+   </code>
+   .
+  </p>
+  <pre><code class="cpp">#include "mbed.h"
+
+//Generate pc Object from Serial Library
+//Serial(/*TXD*/,/*RXD*/);
+Serial pc(PC_02,PC_03);
+
+int main(){
+
+    pc.baud(115200); //Call baud() to set Baudrate
+
+    pc.printf("Hello World!\n");
+
+    while(1)
+    {        
+        pc.putc(pc.getc()+1); //Output the input value + '1'
+    }
+}
+
+</code></pre>
+  <p>
+  </p>
+  <center>
+   <br/>
+   <img alt="UART" src="./images/Tutorial/Tutorial_UART/Tutorial_UART_1.png"/>
+   <br/>
+  </center>
+  <br/>
+  <br/>
+  <h3 id="hardware">
+   Hardware
+  </h3>
+  <h4 id="wizwiki-w7500">
+   WIZwiki-W7500
+  </h4>
+  <p>
+   WIZwiki-W7500 supports UART0, UART1 and UART2.
+  </p>
+  <p>
+  </p>
+  <center>
+   <br/>
+   <img alt="UART" src="./images/Tutorial/Tutorial_UART/Tutorial_UART_2.png"/>
+   <br/>
+  </center>
+  <blockquote>
+   <p>
+    As the below schematic, UART1 is connected to CMSIS-DAP.
+   </p>
+  </blockquote>
+  <p>
+  </p>
+  <center>
+   <br/>
+   <img alt="UART" src="./images/Tutorial/Tutorial_UART/Tutorial_UART_3.png"/>
+   <br/>
+  </center>
+  <br/>
+  <br/>
+  <h3 id="result">
+   Result
+  </h3>
+  <h4 id="serial-terminal-input-hercules">
+   Serial Terminal input (Hercules)
+  </h4>
+  <ol>
+   <li>
+    <code>
+     Download
+    </code>
+    firmware into Wizwiki W7500.
+   </li>
+   <li>
+    Open
+    <code>
+     Serial Terminal
+    </code>
+    in PC.
+   </li>
+   <li>
+    Make sure that
+    <code>
+     Port name
+    </code>
+    and
+    <code>
+     9600bps(Baudrate)
+    </code>
+    and connect
+    <code>
+     WIZwiki-W7500
+    </code>
+    .
+   </li>
+   <li>
+    When firmware starts, Serial Terminal shows
+    <code>
+     Hello World!
+    </code>
+    .
+   </li>
+   <li>
+    Send
+    <code>
+     a character
+    </code>
+    to WIZwiki-W7500.
+   </li>
+   <li>
+    <code>
+     WIZwiki-W7500
+    </code>
+    will return
+    <code>
+     the character value + 1
+    </code>
+   </li>
+  </ol>
+  <p>
+  </p>
+  <center>
+   <br/>
+   <img alt="UART" src="./images/Tutorial/Tutorial_UART/Tutorial_UART_4.png"/>
+   <br/>
+  </center>
+  <h3 id="go-to-tutorial-6-adc">
+   ▶ Go to
+   <a href="Tutorial-ADC.html">
+    Tutorial 6. ADC
+   </a>
+  </h3>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js">
+  </script>
+  <script>
+   hljs.initHighlightingOnLoad();
+  </script>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+  </script>
+  <script type="text/javascript">
+   MathJax.Hub.Config({"showProcessingMessages" : false,"messageStyle" : "none","tex2jax": { inlineMath: [ [ "$", "$" ] ] }});
+  </script>
+ </body>
+</html>

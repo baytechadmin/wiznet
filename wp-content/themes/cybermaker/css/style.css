@@ -1,0 +1,290 @@
+h1,h2,h3,h4,h5,h6,p{
+	margin: 0;
+	line-height: normal;
+}
+.top-bar {
+    background: transparent; none repeat scroll 0 0;
+    float: left;
+    width: 100%;
+}
+/*nav style*/
+nav.mynav {
+    background: transparent;
+    border: medium none;
+    border-radius: 0;
+    min-height: 64px;
+}
+nav.mynav ul.navbar-nav li a {
+    border: medium none;
+    border-radius:0;
+    color: #666666;
+    font-size: 16px;
+    line-height: normal;
+    padding: 4px;
+    font-weight: normal;
+    text-transform: capitalize;
+}
+nav.mynav ul.navbar-nav li{
+    margin-right: 5px;
+}
+nav.mynav  ul.navbar-nav{
+    width: 100%;
+    padding:34px 0 0; 
+}
+
+nav.mynav ul.navbar-nav li a i {
+    margin-left: 8px;
+}
+nav.mynav  ul.navbar-nav > .active > a, nav.mynav  ul.navbar-nav > .active > a:hover, nav.mynav  ul.navbar-nav li a:focus,nav.mynav  ul.navbar-nav > .active > a:focus,nav.mynav  ul.navbar-nav li a:hover{
+    background: transparent;
+    color: #666666;
+    outline: none;
+    border: medium none;
+    /*font-weight: 600;*/
+}
+nav.mynav  ul.navbar-nav .current-menu-item a,nav.mynav  ul.navbar-nav > .active > a{
+    background: transparent;
+    color: #666666;
+    outline: none;
+    border: medium none;
+    /*font-weight: 600;*/
+}
+nav.mynav .navbar-collapse {
+    padding: 0;
+}
+.topsearch {
+    background: #84d1b8 none repeat scroll 0 0;
+    float: left;
+    width: 100%;
+    padding: 12px 0;
+    text-align: center;
+}
+.topsearch *:not(.container) {
+    display: inline-block;
+}
+.mailto, .login-register,.mailto:hover, .login-register:hover {
+    color: #fff;
+}
+.mailto{
+    float: left;
+    line-height: 32px;
+}
+.login-register{
+    float: right;
+    line-height: 32px;
+}
+.seacrh-in input, .seacrh-in select {
+    border: 0 solid #a1beb4;
+    border-radius: 6px;
+    box-shadow: 0 0 2px #797979;
+    height: 32px;
+    margin-left: -3.5px;
+}
+.seacrh-in select{
+    padding-left: 10px;
+}
+.seacrh-in select option {
+    width: 100%;
+}
+.searching {
+    padding-left: 40px;
+    width: 370px;
+}
+.gen-btn {
+    background: #ff8249 none repeat scroll 0 0;
+    border-color: #ff8249;
+    border-radius: 8px;
+    color: #fff;
+    display: inline-block;
+    font-size: 16px;
+    line-height: 32px;
+    min-width: 100px;
+    text-align: center;
+    border-color: #ff8249;
+    text-decoration: none;
+}
+.gen-btn.participate {
+    width: 120px;
+    margin-top: 25px;
+}
+a:hover,a:focus{
+    text-decoration: none;
+}
+
+.gen-btn:hover,.gen-btn:focus{
+    color: #000;
+    text-decoration: none;
+}
+.topnavbar {
+    float: right;
+}
+.logo {
+    float: left;
+    margin-top: 8px;
+}
+
+.searching {
+    background: #fff url("../images/search-icon.jpg") no-repeat scroll 10px 8px / 20px auto;
+}
+
+
+
+/*nav style end*/
+
+/*slider style*/
+
+.slider{
+    width: 100%;
+    float: left;
+}
+.slider img{
+    width: 100%;
+}
+
+/*slider end*/
+
+
+/*content style*/
+
+
+.community, .contests {
+    float: left;
+    padding: 60px 0;
+    width: 100%;
+}
+.community h1, .contests h1{
+    text-align: center;
+    font-weight: bold;
+}
+.community {
+    background: rgba(0, 0, 0, 0) url("../images/orange.png") repeat scroll left top / cover ;
+}
+.contests{
+    background: rgba(0, 0, 0, 0) url("../images/mat.png") repeat scroll left top / cover ;
+}
+.community-in > img {
+    float: left;
+    margin-right: 30px;
+    margin-top: 5px;
+    max-width: 60px;
+}
+.community-in h4 a,.community-in a h4,.community-in h4 a:hover,.community-in a h4:hover,
+.contests h4 a,.contests a h4,.contests h4 a:hover,.contests a h4:hover {
+    text-decoration: none;
+    color: #333;
+}
+.community-in  p {
+    padding-left: 90px;
+}
+.community h1 {
+    color: #fff;
+    margin-bottom: 10px;
+}
+.contests h1 {
+    text-transform: capitalize;
+    color:#ff8249;
+}
+.community-in {
+    margin-top: 60px;
+    min-height: 130px;
+}
+.contests-in {
+    margin-top: 60px;
+    min-height: 260px;
+}
+.contests-in img{
+    width: 100%;
+}
+.whitelist {
+    background: #fff none repeat scroll 0 0;
+    box-shadow: 2px 2px 10px #666;
+    display: block;
+    float: left;
+    padding: 30px;
+    width: 100%;
+}
+.contestsimg {
+    float: right;
+    height: 250px;
+    max-width: 250px;
+    overflow: hidden;
+    padding-left: 30px;
+}
+.contests-in h4 {
+    text-transform: capitalize;
+}
+.contests-in .contests-content {
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+.contests-in .date {
+    font-weight: bold;
+    margin-top: 5px;
+}
+.register {
+    background: #84d1b8 none repeat scroll 0 0;
+    color: #fff;
+    float: left;
+    padding: 45px 0;
+    width: 100%;
+    text-align: center;
+}
+.register h1,.register a{
+    display: inline-block;
+}
+.register a{
+    margin-left: 50px;
+}
+.gen-btn.register-btn,.gen-btn.see-all {
+    width: 175px;
+}
+.see-all-content {
+    margin-top: 60px;
+    text-align: center;
+}
+footer {
+    clear: both;
+    width: 100%;
+    color: #999;
+}
+
+#top-link-block.affix {
+    bottom: 100px;
+    position: fixed;
+    right: 20px;
+}
+#backtotop {
+    background: #ff8249 none repeat scroll 0 0;
+    border-color: #ff8249;
+    border-radius: 8px;
+    color: #fff;
+    display: block;
+    font-size: 30px;
+    height: 40px;
+    line-height: normal;
+    padding: 0;
+    text-align: center;
+    width: 40px;
+}
+
+.copyright {
+    float: left;
+}
+footer a{
+    color: #999;
+}
+
+footer {
+    clear: both;
+    width: 100%;
+    padding-top: 10px;
+}
+.footer-nav,.footer-nav li {
+    display: inline-block;
+}
+.footer-nav li a:hover,footer a:hover{
+    color: #000;
+}
+.question-fot {
+    float: right;
+}

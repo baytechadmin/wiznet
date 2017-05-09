@@ -1,0 +1,399 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <title>
+	WizFi310-Tutorial
+  </title>
+  <link href="http://staging.cybermakerspace.com/css/style.css" rel="stylesheet"/>
+  <style type="text/css">
+   ::selection,a::selection{background:rgba(255,255,0,.3)}a,a::selection{color:#0645ad}hr,img{border:0}a,ins{text-decoration:none}::selection,ins,mark{color:#000}dfn,mark{font-style:italic}hr,ol,p,ul{margin:1em 0}table tr td,table tr th{border:1px solid #ccc;text-align:left;padding:6px 13px;margin:0}hr,pre code,table,table tr{padding:0}pre,pre code{white-space:pre}html{font-size:100%;overflow-y:scroll;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}body{color:#444;font-family:Georgia,Palatino,"Palatino Linotype",Times,"Times New Roman",serif;font-size:12px;line-height:1.5em;padding:1em;margin:auto;max-width:42em;background:#fefefe}a:visited{color:#0b0080}a:hover{color:#06e}a:active{color:#faa700}a:focus{outline:dotted thin}a:active,a:hover{outline:0}::-moz-selection{background:rgba(255,255,0,.3);color:#000}a::-moz-selection{background:rgba(255,255,0,.3);color:#0645ad}img{max-width:100%;-ms-interpolation-mode:bicubic;vertical-align:middle}h1,h2,h3,h4,h5,h6{font-weight:400;color:#111;line-height:1em}b,h4,h5,h6,mark,strong,table tr th{font-weight:700}h1{font-size:2.5em}h2{font-size:2em}h3{font-size:1.5em}h4{font-size:1.2em}h5{font-size:1em}h6{font-size:.9em}blockquote{color:#666;margin:0;padding-left:3em;border-left:.5em #EEE solid}hr{display:block;height:2px;border-top:1px solid #aaa;border-bottom:1px solid #eee}code,kbd,pre,samp{color:#000;font-family:monospace,monospace;font-size:.98em}pre{white-space:pre-wrap;word-wrap:break-word}ins{background:#ff9}mark{background:#ff0}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}ol,ul{padding:0 0 0 2em}li p:last-child{margin:0}dd{margin:0 0 0 2em}table{border-collapse:collapse;border-spacing:0}td{vertical-align:top}@media only screen and (min-width:480px){body{font-size:14px}}@media only screen and (min-width:768px){body{font-size:16px}}@media print{blockquote,img,pre,tr{page-break-inside:avoid}*{background:0 0!important;color:#000!important;filter:none!important;-ms-filter:none!important}body{font-size:12pt;max-width:100%}a,a:visited{text-decoration:underline}hr{height:1px;border:0;border-bottom:1px solid #000}a[href]:after{content:" (" attr(href) ")"}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}blockquote,pre{border:1px solid #999;padding-right:1em}img{max-width:100%!important}@page :left{margin:15mm 20mm 15mm 10mm}@page :right{margin:15mm 10mm 15mm 20mm}h2,h3,p{orphans:3;widows:3}h2,h3{page-break-after:avoid}}table tr{border-top:1px solid #ccc;background-color:#fff;margin:0}table tr:nth-child(2n){background-color:#aaa}table tr td :first-child,table tr th :first-child{margin-top:0}table tr td:last-child,table tr th :last-child{margin-bottom:0}code,tt{margin:0 2px;padding:0 5px;white-space:nowrap;border:1px solid #eaeaea;background-color:#f8f8f8;border-radius:3px}pre code{margin:0;border:none;background:0 0}.highlight pre,pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}
+  </style>
+ </head>
+ <body>
+  <h1 id="1-hardware-configuration">
+   1. Hardware Configuration
+  </h1>
+  <p>
+   Configure some pins and switches of WizFi310 to run a WizFi310_hello_world_demo example. These are D0, D1, SW5, and SW6.
+   <br/>
+   D0 is used to transmit data to a target MCU(WIZwiki-W7500) and D1 is used to receive. In case of SW5, there are three pins that have own functions. 1st pin of SW5 connects A0 pin of the WizFi310 and target MCU to use CDS module. 2nd pin of SW5 connects D14 pin to use DHT11. And 3th pin of SW5 connects D9 to use for resetting the WizFi310. In case of SW6, there are two pins that have own functions. 1st pin of SW6 is D6 that is used as RTS. 2nd pin of SW6 is D7 that is used as CTS.
+  </p>
+  <p>
+   <img alt="" src="images/Tutorial/WizFi310-Shield/02_wizfi310_shield.png"/>
+  </p>
+  <p>
+   <strong>
+    Pins’ Configuration of a Wizfi310 and target MCU(WIZwiki-W7500) are like below.
+   </strong>
+  </p>
+  <p>
+   <img alt="" src="images/Tutorial/WizFi310-Shield/tutorial_0.png"/>
+  </p>
+  <p>
+   <br/>
+  </p>
+  <h3 id="initialize-wizfi310">
+   Initialize WizFi310
+  </h3>
+  <p>
+   <strong>
+    In this example, J1 of WizFi310 Shield have to be connected to D1 using jumper and J3 have to be connected to D0 as below.
+   </strong>
+  </p>
+  <p>
+   <img alt="" src="images/Tutorial/WizFi310-Shield/tutorial_0-1.png"/>
+  </p>
+  <pre><code class="cpp"> WizFi310Interface wifi(D1, D0, D7, D6, D9, NC, 115200); 
+</code></pre>
+  <blockquote>
+   <p>
+    #### Pin Setting
+    <br/>
+    *
+    <strong>
+     D1 : MCU UART_TX
+    </strong>
+    <br/>
+    *
+    <strong>
+     D0 : MCU UART_RX
+    </strong>
+    <br/>
+    *
+    <strong>
+     D7 : MCU UART_RTS
+    </strong>
+    <br/>
+    *
+    <strong>
+     D6 : MCU UART_CTS
+    </strong>
+    <br/>
+    *
+    <strong>
+     D9 : WizFi310 RESET
+    </strong>
+    <br/>
+    *
+    <strong>
+     NC : ALARM
+    </strong>
+    <br/>
+    *
+    <strong>
+     115200 : Default UART Baud Rate
+    </strong>
+    <br/>
+   </p>
+  </blockquote>
+  <hr/>
+  <h1 id="2-how-to-operate-wizfi310-station-mode-example">
+   2. How to operate WizFi310 Station Mode example
+  </h1>
+  <h3 id="mbed-compile-guide-adding-library">
+   mbed Compile Guide &amp; Adding Library
+  </h3>
+  <p>
+   <strong>
+    Join at
+    <a href="https://developer.mbed.org/">
+     https://developer.mbed.org/
+    </a>
+    to use mbed compiler. Because WizFi310 acts as shield, it needs a platform board. Search “WIZwiki-W7500”, and click ‘Add to your mbed Complier’ button.
+   </strong>
+  </p>
+  <p>
+   <img alt="" src="images/Tutorial/WizFi310-Shield/tutorial_1.png"/>
+  </p>
+  <p>
+   <strong>
+    Search “WizFi310_hello_world_demo”, and then click ‘WizFi310_hello_world_demo’.
+   </strong>
+  </p>
+  <p>
+   <img alt="" src="images/Tutorial/WizFi310-Shield/tutorial_2.png"/>
+  </p>
+  <p>
+   <strong>
+    Click ‘Import into Compiler’ button to run WizFi310_hello_world_demo example.
+   </strong>
+  </p>
+  <p>
+   <img alt="" src="images/Tutorial/WizFi310-Shield/tutorial_3.png"/>
+  </p>
+  <p>
+   <strong>
+    After clicking ‘Import into Compiler’ button, it will be shown below. Click ‘Import’ button.
+   </strong>
+  </p>
+  <p>
+   <img alt="" src="images/Tutorial/WizFi310-Shield/tutorial_4.png"/>
+  </p>
+  <p>
+   <strong>
+    When finishing previous steps correctly, WIZwiki-W7500 (on the right side), WizFi310_hello_world_demo example will be added.
+   </strong>
+  </p>
+  <p>
+   <img alt="" src="images/Tutorial/WizFi310-Shield/utorial_5.png"/>
+  </p>
+  <h2 id="source-code">
+   Source Code
+  </h2>
+  <p>
+   <strong>
+    This example shows that WizFi310 operates as station. Make an edit as follows.
+   </strong>
+  </p>
+  <pre><code class="cpp">/*
+ * Copyright (C) 2015 Wiznet, MIT License
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+ * and associated documentation files (the "Software"), to deal in the Software without restriction,
+ * including without limitation the rights to use, copy, modify, merge, publish, distribute,
+ * sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or
+ * substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+ * BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+ * DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+#include &lt;stdio.h&gt;
+#include "mbed.h"
+#include "WizFi310Interface.h"
+
+
+//#define AP_SSID "&lt;SSID&gt;" // Input SSID
+//#define AP_PASSWORD "&lt;PW&gt;" // Input PW
+#define AP_SECURITY NSAPI_SECURITY_WPA2
+
+#if defined(TARGET_WIZwiki_W7500)
+Serial pc(USBTX, USBRX);
+WizFi310Interface wifi(D1, D0, D7, D6, D9, NC, 115200);
+#endif
+
+
+/**
+ *  \brief Hello World
+ *  \param none
+ *  \return int
+ */
+int main()
+{
+    pc.baud(115200);
+
+    printf("WizFi310 Hello World demo. \r\n");
+    if ( wifi.connect(AP_SSID, AP_PASSWORD, AP_SECURITY))     return -1;
+    printf("IP Address is %s\r\n", wifi.get_ip_address());
+
+    wifi.disconnect();
+}
+</code></pre>
+  <p>
+   <strong>
+    Click ‘Compile’ button, and save binary file.
+   </strong>
+  </p>
+  <p>
+   <img alt="" src="images/Tutorial/WizFi310-Shield/tutorial_6.png"/>
+  </p>
+  <h3 id="upload-firmware-to-target-mcuwizwiki-w7500">
+   Upload firmware to Target MCU(WIZwiki-W7500)
+  </h3>
+  <p>
+   <strong>
+    When a target MCU(WIZwiki-W7500) is connected to a PC, “Drag and Drop” the binary file to MBED(X:).
+   </strong>
+  </p>
+  <p>
+   <img alt="" src="images/Tutorial/WizFi310-Shield/tutorial_7.png"/>
+   <br/>
+   <br/>
+  </p>
+  <h3 id="result">
+   Result
+  </h3>
+  <p>
+   <strong>
+    Fix Port and Baud using serial communication tools (Hercules, Token2shell), and Click ‘Open’ button.
+   </strong>
+  </p>
+  <p>
+   <img alt="" src="images/Tutorial/WizFi310-Shield/tutorial_8.png"/>
+  </p>
+  <p>
+   <strong>
+    The result will be shown below. When finishing all steps, prepared to use a WizFi310.
+   </strong>
+  </p>
+  <p>
+   <img alt="" src="images/Tutorial/WizFi310-Shield/tutorial_9.png"/>
+  </p>
+  <hr/>
+  <h1 id="3-how-to-operate-wizfi310-ap-mode-example">
+   3. How to operate WizFi310 AP Mode example
+  </h1>
+  <h3 id="mbed-compile-guide-adding-library_1">
+   mbed Compile Guide &amp; Adding Library
+  </h3>
+  <p>
+   **Join at
+   <a href="https://developer.mbed.org/.**">
+    https://developer.mbed.org/.**
+   </a>
+  </p>
+  <p>
+   <strong>
+    Search “WIZwiki-W7500”, Click ‘Add to your mbed Complier’ button.
+   </strong>
+  </p>
+  <p>
+   <img alt="" src="images/Tutorial/WizFi310-Shield/tutorial_11.png"/>
+  </p>
+  <p>
+   <strong>
+    Search “WizFi310 AP”, Click ‘WizFi310_AP_HelloWorld’.
+   </strong>
+  </p>
+  <p>
+   <img alt="" src="images/Tutorial/WizFi310-Shield/tutorial_12.png"/>
+  </p>
+  <p>
+   <strong>
+    Click ‘Import into Compiler’ button to run WizFi310_AP_HelloWorld example.
+   </strong>
+  </p>
+  <p>
+   <img alt="" src="images/Tutorial/WizFi310-Shield/tutorial_13.png"/>
+  </p>
+  <p>
+   <strong>
+    After clicking ‘Import into Compiler’’ button, it will be shown below. Click ‘Import’ button.
+   </strong>
+  </p>
+  <p>
+   <img alt="" src="images/Tutorial/WizFi310-Shield/tutorial_14.png"/>
+  </p>
+  <p>
+   <strong>
+    When finishing previous steps correctly, WIZwiki-W7500 (on the right side), WizFi310_AP_HelloWorld example will be added.
+   </strong>
+  </p>
+  <p>
+   <img alt="" src="images/Tutorial/WizFi310-Shield/tutorial_15.png"/>
+  </p>
+  <h3 id="source-code_1">
+   Source Code
+  </h3>
+  <p>
+   <strong>
+    Make an edit as follows
+   </strong>
+  </p>
+  <pre><code class="cpp">/*
+ * Copyright (C) 2015 Wiznet, MIT License
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+ * and associated documentation files (the "Software"), to deal in the Software without restriction,
+ * including without limitation the rights to use, copy, modify, merge, publish, distribute,
+ * sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or
+ * substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING
+ * BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+ * DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
+#include &lt;stdio.h&gt;
+#include "mbed.h"
+#include "WizFi310Interface.h"
+
+
+
+#if defined(TARGET_WIZwiki_W7500)
+Serial pc(USBTX, USBRX);
+WizFi310Interface wifi(D1, D0, D7, D6, D9, NC, 115200);
+#endif
+
+#define AP_SSID "&lt;SSID&gt;" // Input SSID
+#define AP_PASSWORD "&lt;PW&gt;" // Input PW
+#define AP_SECURITY NSAPI_SECURITY_WPA2
+#define AP_Mode 1
+#define STATION 0
+
+/**
+ *  \brief Hello World
+ *  \param none
+ *  \return int
+ */
+int main()
+{
+    pc.baud(115200);
+
+    printf("WizFi310 Hello World demo. \r\n");
+    wifi.init("192.168.100.1","255.255.255.0","192.168.100.1");
+    if ( wifi.connect(AP_SSID, AP_PASSWORD, AP_SECURITY, AP_Mode))      return -1; // AP mode
+    //if ( wifi.connect(AP_SSID, AP_PASSWORD, AP_SECURITY, STATION))      return -1; // Station
+
+    printf("IP Address is %s\r\n", wifi.get_ip_address());
+
+    wifi.disconnect();
+}
+</code></pre>
+  <p>
+   <img alt="" src="images/Tutorial/WizFi310-Shield/tutorial_16.png"/>
+  </p>
+  <h3 id="upload-firmware-to-target-mcuwizwiki-w7500_1">
+   Upload firmware to Target MCU(WIZwiki-W7500)
+  </h3>
+  <p>
+   <strong>
+    When connecting WIZwiki-W7500 and PC, “Drag and Drop” the binary file to MBED(X:).
+   </strong>
+  </p>
+  <p>
+   <img alt="" src="images/Tutorial/WizFi310-Shield/tutorial_17.png"/>
+  </p>
+  <h3 id="result_1">
+   Result
+  </h3>
+  <p>
+   <strong>
+    When fixing Port and Baud using serial communication tools (Hercules, Token2shell), and Click ‘Open’ button.
+   </strong>
+  </p>
+  <p>
+   <img alt="" src="images/Tutorial/WizFi310-Shield/tutorial_18.png"/>
+  </p>
+  <p>
+   <strong>
+    The result will be shown below.
+   </strong>
+  </p>
+  <p>
+   <img alt="" src="images/Tutorial/WizFi310-Shield/tutorial_19.png"/>
+  </p>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js">
+  </script>
+  <script>
+   hljs.initHighlightingOnLoad();
+  </script>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+  </script>
+  <script type="text/javascript">
+   MathJax.Hub.Config({"showProcessingMessages" : false,"messageStyle" : "none","tex2jax": { inlineMath: [ [ "$", "$" ] ] }});
+  </script>
+ </body>
+</html>

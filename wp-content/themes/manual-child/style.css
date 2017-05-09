@@ -1,0 +1,16 @@
+/*
+ Theme Name:     Manual Child Theme
+ Theme URI:      http://wpsmartapps.com/
+ Description:    Child Theme for Manual
+ Author:         jabin Kadel
+ Author URI:     http://www.jabinkadel.com
+ Template:       manual
+ Version:        1.0
+*/
+ 
+@import url("../manual/style.css");
+
+
+/* ------- Insert custom styles below this line ------- */
+
+.um-register, .um-login, .um-login.um-logout, .um-password{ width:100% !important; opacity:1 !important; max-width:100% !important; }
